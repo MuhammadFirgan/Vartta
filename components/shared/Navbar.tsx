@@ -32,7 +32,7 @@ export default function Navbar() {
         </nav>
 
         <nav className="mx-auto mt-[30px] flex w-full max-w-[1130px] items-center justify-between gap-4 overflow-x-auto py-2 scrollbar-none">
-            <Link href="">
+            <Link href="/category/halo">
                 <div className="flex gap-[10px] rounded-full px-[22px] py-3 ring-1 ring-[#E8EBF4] transition-all duration-300 hover:ring-2 hover:ring-maga-orange">
                     <div className="h-6 w-6 shrink-0 overflow-hidden">
                         <Image width={24} height={24} className="h-full w-full object-contain" src="/icons/heart-black.svg" alt="" />
