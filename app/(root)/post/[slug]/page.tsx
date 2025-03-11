@@ -18,7 +18,7 @@ export default async function Page({
                         <Image width={30} height={30} src="/photos/profile-7.png" alt="image" className="object-cover w-full h-full" />
                     </div>
                     <div>
-                        <h5 className="font-semibold text-start text-sm leading-[21px]">Rita Putria</h5>
+                        <Link href="/author/halo" className="font-semibold text-start text-sm leading-[21px]">Rita Putria</Link>
                         <p className="text-xs leading-[18px] text-[#A3A6AE]">Sr Programmer</p>
                     </div>
                 </div>
