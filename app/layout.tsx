@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -20,12 +21,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${poppins.className} bg-neutral-950 text-white antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          formButtonPrimary: {
+            fontSize: 14,
+            textTransform: 'none',
+            
+            color: 'white',
+          },
+          socialButtonsIconButton: {
+            color: 'white',
+          },
+          socialButtonsBlockButton: {
+            color: 'white',
+          }
+        },
+        variables: {
+          colorTextOnPrimaryBackground: 'white',
+          colorText: 'white',
+          colorPrimary: '#fd9a00',
+        }
+      }}
+    >
+      <html lang="en">
+        <body
+          className={`${poppins.className} bg-neutral-950 text-white antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

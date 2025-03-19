@@ -1,11 +1,28 @@
 
-
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import SearchField from './SearchField'
 import Image from 'next/image'
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
+import { createUser } from '@/lib/actions/user.action'
 
-export default function Navbar() {
+
+export default async function Navbar() {
+
+    const user = await currentUser()
+
+    const setUser = await createUser({
+        firstName: user?.firstName || "",
+        lastName: user?.lastName || "",
+        clerkId: user?.id || "",
+        email: user?.emailAddresses[0].emailAddress || "",
+        photo: user?.imageUrl || "",
+        username: user?.username || ""
+    })
+    console.log(setUser)
+    console.log(user)
+
   return (
     <>
     
@@ -16,16 +33,29 @@ export default function Navbar() {
             </div>
             <SearchField />
             <div className="flex gap-2">
-                <Button asChild> 
-                    <Link href="">
-                        Login
+                {/* <Button asChild> 
+                    <Link href="/sign-in">
+                        Sign In 
                     </Link>
+                    
                 </Button>
                 <Button asChild> 
-                    <Link href="">
-                        Register
+                    <Link href="/sign-up">
+                        Sign Up
                     </Link>
-                </Button>
+                    
+                </Button> */}
+                <SignedOut>
+                    <SignInButton>
+                        <Button className="bg-primary">Sign In</Button>
+                    </SignInButton>
+                    <SignUpButton>
+                        <Button variant="outline">Sign Up</Button>
+                    </SignUpButton>
+                </SignedOut>
+                    <SignedIn>
+                    <UserButton />
+                </SignedIn>
 
                 
             </div>
