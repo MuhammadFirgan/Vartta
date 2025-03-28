@@ -21,7 +21,7 @@ export default async function Navbar() {
         username: user?.username || ""
     })
     console.log(setUser)
-    console.log(user)
+
 
   return (
     <>
