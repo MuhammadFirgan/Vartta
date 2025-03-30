@@ -9,14 +9,14 @@ import { useRef } from 'react';
 
 export default function SlideSection() {
     // const swiper = useSwiper()
-    // console.log(swiper)
-    const swiperRef = useRef<any>(null)
+    console.log(typeof Swiper)
+    const swiperRef = useRef(null)
   return (
     <Swiper
         slidesPerView={1}
         onSlideChange={() => console.log("oke")}
         
-        onSwiper={swiper => swiperRef.current = swiper}
+        onSwiper={swiper => swiperRef?.current = swiper}
         
     >
         <div className='swipper-wrapper'>

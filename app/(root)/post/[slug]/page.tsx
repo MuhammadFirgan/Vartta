@@ -8,6 +8,7 @@ export default async function Page({
     params: Promise<{ slug: string }>
   }) {
     const { slug } = await params
+    console.log(slug)
     return (
         <section className="text-center mt-20 flex flex-col gap-y-4">
             <p className="text-[#A3A6AE]">12 Jun, 2024 • Business</p>
@@ -48,7 +49,7 @@ export default async function Page({
                     <li>
                         <p>
                         <strong>Credibility:</strong>
-                        To build trust with your future students, you need to show them that you're the real deal. Having actual experience in the subject
+                        To build trust with your future students, you need to show them that you re the real deal. Having actual experience in the subject
                         matter is the first step to gaining their confidence.
                         </p>
                     </li>
@@ -75,7 +76,7 @@ export default async function Page({
                     <li>
                         <p>
                         <strong>Credibility:</strong>
-                        To build trust with your future students, you need to show them that you're the real deal. Having actual experience in the subject
+                        To build trust with your future students, you need to show them that you re the real deal. Having actual experience in the subject
                         matter is the first step to gaining their confidence.
                         </p>
                     </li>
