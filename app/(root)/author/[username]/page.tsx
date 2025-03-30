@@ -8,6 +8,7 @@ export default async function page({
     params: Promise<{ username: string }>
   }) {
     const { username } = await params
+    console.log(username)
   return (
     <section id="author-news" className="mx-auto flex w-full flex-col items-center gap-[30px] pb-14">
         <div className="flex gap-[30px] items-center justify-center px-8 py-6">
