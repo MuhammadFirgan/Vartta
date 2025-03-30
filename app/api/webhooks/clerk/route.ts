@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { headers } from 'next/headers'
-import { WebhookEvent } from '@clerk/nextjs/server'
+import { clerkClient, WebhookEvent } from '@clerk/nextjs/server'
 import { Webhook } from 'svix'
+import { createUser } from '@/lib/actions/user.action'
+import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   const SIGNING_SECRET = process.env.SIGNING_SECRET
@@ -45,11 +48,33 @@ export async function POST(req: Request) {
     })
   }
 
-  
-  const { id } = evt.data
   const eventType = evt.type
-  console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
-//   console.log('Webhook payload:', body)
+  
+  if(eventType === "user.created") {
+    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data
+
+    const user = {
+      clerkId: id,
+      email: email_addresses[0].email_address,
+      photo: image_url,
+      firstName: first_name,
+      lastName: last_name,
+      username: username!
+    }
+
+    const newUser = await createUser(user)
+
+    if(newUser) {
+      const client = await clerkClient()
+      await client.users.updateUserMetadata(id, {
+        publicMetadata: {
+          userId: newUser._id
+        }
+      })
+    }
+
+    return NextResponse.json({ message: 'OK', user: newUser })
+  }
 
   return new Response('Webhook received', { status: 200 })
 }

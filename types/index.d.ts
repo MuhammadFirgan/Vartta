@@ -5,10 +5,10 @@ export interface CardProps {
     category: string
 }
 
-export interface CreateUserProps {
+export type CreateUserProps = {
     clerkId: string
-    firstName: string
-    lastName: string
+    firstName: string | null
+    lastName: string | null
     username: string
     email: string
     photo: string
