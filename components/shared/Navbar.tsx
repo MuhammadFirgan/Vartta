@@ -12,15 +12,15 @@ export default async function Navbar() {
 
     const user = await currentUser()
 
-    // const setUser = await createUser({
-    //     firstName: user?.firstName || "",
-    //     lastName: user?.lastName || "",
-    //     clerkId: user?.id || "",
-    //     email: user?.emailAddresses[0].emailAddress || "",
-    //     photo: user?.imageUrl || "",
-    //     username: user?.username || ""
-    // })
-    // console.log(setUser)
+    const setUser = await createUser({
+        firstName: user?.firstName || "",
+        lastName: user?.lastName || "",
+        clerkId: user?.id || "",
+        email: user?.emailAddresses[0].emailAddress || "",
+        photo: user?.imageUrl || "",
+        username: user?.username || ""
+    })
+    console.log(setUser)
 
 
   return (
