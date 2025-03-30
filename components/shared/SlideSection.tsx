@@ -1,5 +1,6 @@
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperCore } from 'swiper'
 import SlideCard from './SlideCard'
 import Image from 'next/image'
 import 'swiper/css';
@@ -10,13 +11,13 @@ import { useRef } from 'react';
 export default function SlideSection() {
     // const swiper = useSwiper()
     console.log(typeof Swiper)
-    const swiperRef = useRef(null)
+    const swiperRef = useRef<SwiperCore>(null)
   return (
     <Swiper
         slidesPerView={1}
         onSlideChange={() => console.log("oke")}
         
-        onSwiper={swiper => swiperRef?.current = swiper}
+        onSwiper={swiper => swiperRef.current = swiper}
         
     >
         <div className='swipper-wrapper'>

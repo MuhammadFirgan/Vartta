@@ -5,7 +5,7 @@ import SearchField from './SearchField'
 import Image from 'next/image'
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { currentUser } from '@clerk/nextjs/server'
-import { createUser } from '@/lib/actions/user.action'
+// import { createUser } from '@/lib/actions/user.action'
 
 
 export default async function Navbar() {
